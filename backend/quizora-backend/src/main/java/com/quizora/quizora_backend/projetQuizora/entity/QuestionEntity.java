@@ -18,7 +18,7 @@ public class QuestionEntity {
     private int tempsLimite;
 
     @ManyToOne
-    @JoinColumn(name = "quiz_id")
+    @JoinColumn(name = "idquiz")
     private QuizEntity quiz;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)

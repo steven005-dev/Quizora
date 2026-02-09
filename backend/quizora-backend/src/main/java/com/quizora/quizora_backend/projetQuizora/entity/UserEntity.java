@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import com.quizora.quizora_backend.projetQuizora.entity.rolePlatfomeEntity;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name="user")
+@Table(name="users")
 public abstract class UserEntity {
     @Id
     @NotNull

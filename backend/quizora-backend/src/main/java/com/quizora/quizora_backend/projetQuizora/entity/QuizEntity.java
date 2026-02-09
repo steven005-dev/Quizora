@@ -22,7 +22,7 @@ public class QuizEntity {
     private EnseignantEntity createur;
 
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
-    private List<EnseignantEntity> questions = new ArrayList<>();
+    private List<QuestionEntity> questions = new ArrayList<>();
 
     public String getIdquiz() {
         return idquiz;
@@ -64,11 +64,11 @@ public class QuizEntity {
         this.createur = createur;
     }
 
-    public List<EnseignantEntity> getQuestions() {
+    public List<QuestionEntity> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<EnseignantEntity> questions) {
+    public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
     }
 }
