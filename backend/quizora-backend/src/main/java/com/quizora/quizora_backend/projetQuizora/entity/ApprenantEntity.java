@@ -20,4 +20,6 @@ public class ApprenantEntity extends UserEntity{
     public void setParticipations(List<ParticipationEntity> participations) {
         this.participations = participations;
     }
+
+
 }

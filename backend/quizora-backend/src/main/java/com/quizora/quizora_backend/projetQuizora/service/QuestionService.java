@@ -29,10 +29,29 @@ public class QuestionService {
                 .orElseThrow(() -> new RuntimeException("question non trouvé avec id : " + id));
     }
 
-    public void deleteParticipation(String id) {
+    public void deleteQuestion(String id) {
         if (!questionRepository.existsById(id)) {
             throw new RuntimeException("Impossible de supprimer, apprenant introuvable avec id : " + id);
         }
         questionRepository.deleteById(id);
     }
+
+    public String GenererIdQuestion(){
+        return questionRepository.generate_question_id();
+    }
+
+    public Boolean ExistQuestion (String id){
+        return questionRepository.existsById(id);    }
+
+    public QuestionEntity ModifierQuestion(String id, QuestionEntity q){
+        QuestionEntity existent = FindById(id);
+        existent.setEnonce(q.getEnonce());
+        existent.setTypeQuestion(q.getTypeQuestion());
+        existent.setTempsLimite(q.getTempsLimite());
+        existent.setQuiz(q.getQuiz());
+        existent.setReponses(q.getReponses());
+        return   questionRepository.save(existent);
+
+    }
+
 }

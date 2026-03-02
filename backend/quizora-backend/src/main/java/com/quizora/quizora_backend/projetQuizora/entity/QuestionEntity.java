@@ -15,13 +15,16 @@ public class QuestionEntity {
     private String idquestion;
 
     private String enonce;
+
+    @Enumerated(EnumType.STRING)
+    private TypeQuestion typeQuestion;
     private int tempsLimite;
 
     @ManyToOne
     @JoinColumn(name = "idquiz")
     private QuizEntity quiz;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReponseEntity> reponses = new ArrayList<>();
 
     public String getIdquestion() {
@@ -62,5 +65,13 @@ public class QuestionEntity {
 
     public void setReponses(List<ReponseEntity> reponses) {
         this.reponses = reponses;
+    }
+
+    public TypeQuestion getTypeQuestion() {
+        return typeQuestion;
+    }
+
+    public void setTypeQuestion(TypeQuestion typeQuestion) {
+        this.typeQuestion = typeQuestion;
     }
 }

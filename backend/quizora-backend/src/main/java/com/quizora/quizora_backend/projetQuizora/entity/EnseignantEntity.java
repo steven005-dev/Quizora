@@ -20,4 +20,6 @@ public class EnseignantEntity extends UserEntity {
     public void setQuizCrees(List<QuizEntity> quizCrees) {
         this.quizCrees = quizCrees;
     }
+
+
 }

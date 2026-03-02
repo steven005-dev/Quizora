@@ -35,4 +35,19 @@ public class ReponseService {
         reponseRepository.deleteById(id);
     }
 
+    public String GenererIdReponse(){
+        return reponseRepository.generate_reponse_id();
+    }
+
+    public ReponseEntity ModifierReponse(String id, ReponseEntity R){
+        ReponseEntity existent = FindById(id);
+        existent.setContenu(R.getContenu());
+        existent.setCorrecte(R.isCorrecte());
+        return reponseRepository.save(R);
+    }
+
+    public Boolean exist_reponse(String id){
+        return reponseRepository.existsById(id);
+    }
+
 }

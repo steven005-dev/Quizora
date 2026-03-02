@@ -15,13 +15,14 @@ public class QuizEntity {
     private String idquiz;
     private String titre;
     private String description;
-    private String niveau;
+    @Enumerated(EnumType.STRING)
+    private Niveau niveau;
 
     @ManyToOne
     @JoinColumn(name = "enseignant_id")
     private EnseignantEntity createur;
 
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> questions = new ArrayList<>();
 
     public String getIdquiz() {
@@ -48,13 +49,6 @@ public class QuizEntity {
         this.description = description;
     }
 
-    public String getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(String niveau) {
-        this.niveau = niveau;
-    }
 
     public EnseignantEntity getCreateur() {
         return createur;
@@ -70,5 +64,13 @@ public class QuizEntity {
 
     public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
     }
 }
